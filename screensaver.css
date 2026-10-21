@@ -1,0 +1,59 @@
+@font-face{font-family:AGRESSIVE;src:url('./AGRESSIVE.otf') format('opentype');font-display:swap}
+:root{color-scheme:dark;font-family:Inter,'Segoe UI',Arial,sans-serif;background:#030508;color:#e9eef4}*{box-sizing:border-box}body{margin:0;overflow:hidden}canvas,.vignette,.words{position:fixed;inset:0;width:100%;height:100%}canvas{z-index:0}.vignette{pointer-events:none;background:radial-gradient(ellipse at 50% 48%,transparent 15%,#02040744 65%,#020407c9 100%);z-index:1}.brand{position:absolute;left:50%;top:46%;width:min(52vw,720px);transform:translate(-50%,-50%);z-index:3;animation:float 38s ease-in-out infinite}.brand svg{display:block;width:100%;overflow:visible;filter:drop-shadow(0 0 32px #a9cfff18)}.brand .cls-5{font-family:'Segoe UI',Arial,sans-serif;font-size:20px;letter-spacing:5px}.words{z-index:2;pointer-events:none}.word{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;font-size:clamp(15px,1.9vw,29px);font-weight:300;letter-spacing:.025em;color:#b8c7d8;opacity:0;will-change:opacity,transform,filter}.word.ar{font-family:'Segoe UI',Tahoma,sans-serif;letter-spacing:0}.chrome{position:fixed;z-index:5;transition:opacity 1s ease}.top{top:35px;left:40px;right:40px;display:flex;justify-content:space-between;align-items:center}.label{font-size:10px;letter-spacing:.25em;color:#a4b1c3;text-transform:uppercase}.label b{font-weight:500;color:#e1e8f1}.status{display:flex;align-items:center;gap:10px}.dot{width:4px;height:4px;border-radius:50%;background:#9eb9d7;box-shadow:0 0 10px #abcaff}.bottom{bottom:28px;left:40px;right:40px;display:flex;justify-content:space-between;align-items:center;gap:18px}.caption{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#738197}.controls{display:flex;gap:6px;align-items:center}button,select{font:11px 'Segoe UI',Arial,sans-serif;color:#b9c6d5;border:1px solid #ffffff18;background:#0b111aa6;border-radius:30px;padding:9px 15px;cursor:pointer;backdrop-filter:blur(12px)}button:hover,select:hover{background:#ffffff12;color:white}button:focus-visible,select:focus-visible{outline:2px solid #adcbee;outline-offset:4px}body.idle{cursor:none}body.idle .chrome{opacity:0;pointer-events:none}body.paused .brand{animation-play-state:paused}#message{position:fixed;bottom:85px;left:50%;transform:translateX(-50%);z-index:8;font-size:12px;color:#c1cfde}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}@keyframes float{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-48%,-54%)}}@media(max-width:650px){.brand{width:85vw}.top{top:22px;left:22px;right:22px}.bottom{left:18px;right:18px;bottom:20px;justify-content:center}.caption{display:none}.label{font-size:8px}.word{font-size:16px}.controls{gap:4px}button,select{padding:9px 11px}}@media(prefers-reduced-motion:reduce){.brand{animation:none}}
+.brand .cls-5:lang(ar){letter-spacing:0;font-family:"Segoe UI",Tahoma,sans-serif}
+/* Two independently animated faces keep each word transition continuous. */
+.word{width:24vw;max-width:340px;height:2.5em;filter:none;will-change:transform;white-space:normal}
+.word-face{position:absolute;left:50%;top:50%;width:100%;text-align:center;line-height:1.35;text-wrap:balance;will-change:opacity,transform,filter;text-transform:uppercase;font-weight:800}
+.word-face:lang(ar){font-family:'Segoe UI',Tahoma,sans-serif;letter-spacing:0}
+@media(max-width:650px){.word{width:36vw;font-size:clamp(12px,3.2vw,16px)}}
+.ghost-fibers-container{position:fixed;inset:0;overflow:hidden;background:radial-gradient(ellipse at 50% 55%,#0b1020,#030508 75%);z-index:0}
+.ghost-fibers-canvas{position:absolute;inset:0;display:block;width:100%;height:100%;opacity:.85}
+.vignette{background:radial-gradient(ellipse at 50% 46%,#02040740,transparent 45%,#02040788 100%)}
+.word-face:lang(hi),.brand .cls-5:lang(hi),.word-face:lang(zh),.brand .cls-5:lang(zh),.word-face:lang(ja),.brand .cls-5:lang(ja),.word-face:lang(ko),.brand .cls-5:lang(ko){letter-spacing:0}
+.word-face{text-shadow:0 2px 18px #000c}
+.brand svg{transform-origin:50% 50%;will-change:opacity,transform,filter}.word-face{line-height:1.45}.brand .cls-5{letter-spacing:5px}
+/* Local backlight and two drifting text silhouettes create a smoke-like departure. */
+.word-glow{position:absolute;left:50%;top:50%;width:90%;height:100px;pointer-events:none;opacity:0;background:radial-gradient(ellipse,rgba(167,204,255,.32) 0%,rgba(112,148,235,.14) 30%,transparent 70%);filter:blur(14px);mix-blend-mode:screen;will-change:opacity,transform}
+.word-face::before,.word-face::after{content:attr(data-text);position:absolute;inset:0;pointer-events:none;opacity:var(--smoke-opacity,0);color:#c2d9f3;filter:blur(calc(2px + var(--smoke,0)*7px));transform:translate(calc(var(--smoke,0)*20px),calc(var(--smoke,0)*-16px)) scale(calc(1 + var(--smoke,0)*.14));mask-image:linear-gradient(120deg,transparent 2%,#000 30%,transparent 55%,#000 80%,transparent)}
+.word-face::after{transform:translate(calc(var(--smoke,0)*-17px),calc(var(--smoke,0)*-28px)) scale(calc(1 + var(--smoke,0)*.24));mask-image:linear-gradient(70deg,#000,transparent 35%,#000 65%,transparent)}
+.word{width:25vw;font-size:clamp(14px,1.6vw,25px)}@media(max-width:650px){.word{width:29vw;font-size:clamp(10px,2.6vw,15px)}.word-face{line-height:1.25}}
+
+.word-face:lang(he){font-family:"Segoe UI",Arial,sans-serif;letter-spacing:0;direction:rtl}
+
+/* Native popup menus need opaque option colors, separate from the glass control. */
+#language{color-scheme:dark;background-color:#101824;color:#e5edf7}
+#language option,#language optgroup{background-color:#101824;color:#e5edf7}
+#language option:checked{background-color:#29415e;color:#fff}
+#language:focus-visible{outline:2px solid #a8c8ec;outline-offset:3px}
+
+/* A fixed, touch-safe stage scales with portrait, landscape and preview windows. */
+html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none;touch-action:none}
+body{position:fixed;inset:0;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+*{user-select:none;-webkit-user-select:none;scrollbar-width:none}
+*::-webkit-scrollbar{display:none}
+img,svg{-webkit-user-drag:none}
+.brand{width:min(72vw,720px,60vh)}
+.word{width:32vw;max-width:420px;font-size:clamp(13px,min(2.2vw,3.8vh),34px)}
+.word-face{overflow-wrap:anywhere}
+.top{top:max(16px,env(safe-area-inset-top));left:max(16px,env(safe-area-inset-left));right:max(16px,env(safe-area-inset-right))}
+.bottom{bottom:max(14px,env(safe-area-inset-bottom));left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right))}
+.controls{max-width:100%;min-width:0;flex-wrap:wrap;justify-content:center}
+.controls select{min-width:0;max-width:min(42vw,170px)}
+#message{max-width:90vw;text-align:center}
+@media(max-width:650px){.brand{width:min(85vw,60vh)}.word{width:34vw;font-size:clamp(12px,min(3.4vw,3.6vh),21px)}.label{font-size:8px;letter-spacing:.16em}}
+@media(max-height:450px){.caption{display:none}.top{top:8px}.bottom{bottom:8px;justify-content:center}.label{font-size:8px}button,select{padding:6px 10px}.word{font-size:clamp(10px,3.2vh,15px)}}
+
+/* Softly raised lettering with a cool, diffused backlight. */
+.word{font-weight:800;color:#eaf3ff}
+.word-face{ text-rendering:optimizeLegibility }
+.word-glow{width:150%;height:clamp(70px,14vh,160px);background:radial-gradient(ellipse,rgba(205,230,255,.95) 0%,rgba(140,185,255,.6) 32%,rgba(110,150,245,.28) 55%,transparent 85%);filter:blur(18px);transform:translate(-50%,-50%)}
+
+/* A quick highlight travels in reading order across each new word. */
+.word-face.shine .letter{animation:letter-shine .28s ease-out both;animation-delay:var(--shine-delay)}
+@keyframes letter-shine{0%,100%{color:inherit;text-shadow:inherit}45%{color:#fff;text-shadow:0 0 8px #fff,0 0 22px #c6e5ff,0 0 44px #89baff,0 0 70px #6aa6ff}}
+body.paused .letter{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.word-face.shine .letter{animation:none}}
+
+/* Screensaver mode: set by the macOS .saver bundle, removes every on-screen control. */
+.saver{cursor:none}
+.saver .chrome{display:none}

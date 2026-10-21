@@ -1,0 +1,30 @@
+name: macOS installer
+
+# Builds the screen saver and installer package on GitHub's macOS runners,
+# so the .pkg can be produced without owning a Mac.
+#
+# Download the result from the run's "Artifacts" section, or from the latest
+# successful run at: https://github.com/<owner>/<repo>/actions
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build .saver, .pkg and .dmg
+        run: bash mac-screensaver/make-installer.sh
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: BlackWater-macOS
+          if-no-files-found: error
+          path: |
+            mac-screensaver/dist/*.pkg
+            mac-screensaver/dist/*.dmg
